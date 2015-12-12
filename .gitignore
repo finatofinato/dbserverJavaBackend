@@ -6,4 +6,7 @@
 .Spotlight-V100
 .Trashes
 
-+target
+*/target
+*/target/*
+*/target/**
+*/target/*.*
