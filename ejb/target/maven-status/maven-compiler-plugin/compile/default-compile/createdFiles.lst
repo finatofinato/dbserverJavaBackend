@@ -1,6 +1,16 @@
+br/com/finatofinato/bean/votacao/VotacaoRemote.class
+br/com/finatofinato/bean/restaurante/RestauranteRemote.class
 br/com/finatofinato/NewSessionLocal.class
 br/com/finatofinato/NewSessionBean.class
 br/com/finatofinato/NewSessionBean$Retorno.class
 br/com/finatofinato/EJBAppClientUtil.class
+br/com/finatofinato/bean/restaurante/RestauranteBean.class
+br/com/finatofinato/bean/votacao/VotacaoBean$Retorno.class
 br/com/finatofinato/NewSessionWebService.class
 br/com/finatofinato/NewSessionRemote.class
+br/com/finatofinato/bean/votacao/VotacaoBean.class
+br/com/finatofinato/bean/votacao/VotacaoInterface.class
+br/com/finatofinato/bean/votacao/VotacaoLocal.class
+br/com/finatofinato/bean/restaurante/RestauranteLocal.class
+br/com/finatofinato/bean/restaurante/RestauranteInterface.class
+br/com/finatofinato/bean/restaurante/RestauranteBean$Retorno.class
