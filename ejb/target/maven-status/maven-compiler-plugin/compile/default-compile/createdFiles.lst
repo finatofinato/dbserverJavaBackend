@@ -1,0 +1,6 @@
+br/com/finatofinato/NewSessionLocal.class
+br/com/finatofinato/NewSessionBean.class
+br/com/finatofinato/NewSessionBean$Retorno.class
+br/com/finatofinato/EJBAppClientUtil.class
+br/com/finatofinato/NewSessionWebService.class
+br/com/finatofinato/NewSessionRemote.class
