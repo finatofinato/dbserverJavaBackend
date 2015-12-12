@@ -7,4 +7,6 @@
 .Trashes
 
 */target/*
+*/target/*.*
 */bin/*
+*/bin/*.*
