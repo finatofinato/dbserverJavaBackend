@@ -6,7 +6,5 @@
 .Spotlight-V100
 .Trashes
 
-*/target/*
-*/target/*.*
-*/bin/*
-*/bin/*.*
+*/target
+*/bin
