@@ -14,15 +14,15 @@ import javax.naming.NamingException;
 public class EJBAppClientUtil {
 
 	public static void main(String[] args) {
-    	NewSessionRemote bean = doLookup();
+    	TesteRemote bean = doLookup();
         String retorno = bean.foo();
         System.out.println(retorno);
     }
 
 	 
-    private static NewSessionRemote doLookup() {
+    private static TesteRemote doLookup() {
         Context context = null;
-        NewSessionRemote bean = null;
+        TesteRemote bean = null;
 
         try {
         	Properties properties = new Properties();
@@ -49,7 +49,7 @@ public class EJBAppClientUtil {
         	
         	
         	List<String> teste = new ArrayList<String>();
-        	teste.add("ejb:ear-0.0.1-SNAPSHOT/ejb-0.0.1-SNAPSHOT/NewSessionBean!br.com.finatofinato.NewSessionRemote");
+        	teste.add("ejb:ear-0.0.1-SNAPSHOT/ejb-0.0.1-SNAPSHOT/TesteBean!br.com.finatofinato.TesteRemote");
         	
         //	teste.add("ejb:ear-0.0.1-SNAPSHOT/ejb-0.0.1-SNAPSHOT/NewSessionBean!br.com.finatofinato.NewSessionLocal");
         	
@@ -66,7 +66,7 @@ public class EJBAppClientUtil {
         	aaaaa/local-br.com.finatofinato.dbserver.NewSessionLocal - EJB3.x Local Business Interface
         	*/
         	
-			bean = (NewSessionRemote) context.lookup(teste.get(0));
+			bean = (TesteRemote) context.lookup(teste.get(0));
 
         } catch (NamingException e) {
             e.printStackTrace();

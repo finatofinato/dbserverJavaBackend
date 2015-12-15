@@ -1,4 +1,4 @@
-package br.com.finatofinato.rest;
+package br.com.finatofinato.rest.api;
 
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
@@ -12,13 +12,13 @@ import javax.ws.rs.core.Response;
 
 import com.google.gson.Gson;
 
-import br.com.finatofinato.NewSessionRemote;
+import br.com.finatofinato.TesteRemote;
 
-@Path("/votacaoroutes")
-public class VotacaoRESTRoutes {
+@Path("/restservice")
+public class TesteRESTWS {
 	
 	@EJB
-	private NewSessionRemote remote;
+	private TesteRemote remote;
 	
 	@GET
 	@Path("/{param1}")
@@ -48,17 +48,17 @@ public class VotacaoRESTRoutes {
 	}
 	
     class Produto {
-    	private String id;
+    	private Integer id;
     	private String nome;
     	
     	public Produto() {
     		
     	}
     	
-    	public String getId() {
+    	public Integer getId() {
 			return id;
 		}
-    	public void setId(String id) {
+    	public void setId(Integer id) {
 			this.id = id;
 		}
     	public String getNome() {

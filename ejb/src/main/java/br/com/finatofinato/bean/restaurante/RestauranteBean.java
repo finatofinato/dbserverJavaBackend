@@ -4,24 +4,24 @@
  */
 package br.com.finatofinato.bean.restaurante;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 
-import com.google.gson.Gson;
+import br.com.finatofinato.bean.common.EMHelper;
+import br.com.finatofinato.model.Restaurante;
 
 @Stateless
-public class RestauranteBean implements RestauranteRemote, RestauranteLocal {
+public class RestauranteBean extends EMHelper implements RestauranteRemote, RestauranteLocal {
 
-    public String foo() {
-    	System.out.println("entrou foo!!!");
-    	Gson gson = new Gson();
-    	String retorno = gson.toJson(new Retorno("mostrando json"));
-    	return retorno;
+    public List<Restaurante> listar() {
+    	List<Restaurante> result = getEntityManager().createQuery("SELECT r FROM Restaurante r").getResultList();
+    	return result;
     }
-
-    class Retorno {
-    	private String mensagem;
-    	public Retorno(String mensagem) {
-    		this.mensagem = mensagem;
-    	}
+    
+    public Restaurante inserir(Restaurante restaurante) {
+    	getEntityManager().persist(restaurante);
+    	return restaurante;
     }
+    
 }

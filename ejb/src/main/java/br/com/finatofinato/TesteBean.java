@@ -9,7 +9,7 @@ import javax.ejb.Stateless;
 import com.google.gson.Gson;
 
 @Stateless
-public class NewSessionBean implements NewSessionRemote, NewSessionLocal {
+public class TesteBean implements TesteRemote, TesteLocal {
 
     public String foo() {
     	System.out.println("entrou foo!!!");

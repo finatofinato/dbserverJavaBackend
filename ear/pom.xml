@@ -31,6 +31,7 @@
 			      <type>war</type>
 			      <version>0.0.1-SNAPSHOT</version>
 		    </dependency>
+		    
 	</dependencies>
 	
 	<build>
