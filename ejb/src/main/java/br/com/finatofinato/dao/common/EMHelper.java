@@ -1,4 +1,4 @@
-package br.com.finatofinato.bean.common;
+package br.com.finatofinato.dao.common;
 
 import java.io.Serializable;
 import java.util.Map;

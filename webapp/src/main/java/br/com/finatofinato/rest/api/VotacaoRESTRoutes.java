@@ -10,6 +10,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import br.com.finatofinato.bean.resultados.ResultadosRemote;
 import br.com.finatofinato.bean.votacao.VotacaoRemote;
 import br.com.finatofinato.json.RestauranteJson;
 import br.com.finatofinato.json.ResultadosJson;
@@ -25,13 +26,15 @@ import br.com.finatofinato.rest.converter.VotacaoConverter;
 public class VotacaoRESTRoutes {
 	
 	@EJB
-	private VotacaoRemote remote;
+	private VotacaoRemote votacaoRemote;
+	@EJB
+	private ResultadosRemote resultadosRemote;
 	
 	@GET
 	@Path("/votacao")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response listarVotacoes() {
-		List<Votacao> models = remote.listar();
+		List<Votacao> models = votacaoRemote.listar();
 		List<VotacaoJson> jsons = VotacaoConverter.modelToJson(models);
 		return Response.status(200).entity(jsons).build();
 	}
@@ -42,7 +45,7 @@ public class VotacaoRESTRoutes {
 	public Response inserirVotacao(String document) {
 		VotacaoJson json = VotacaoConverter.stringToJson(document);
 		Votacao model = VotacaoConverter.jsonToModel(json);
-		model = remote.inserir(model);
+		model = votacaoRemote.inserir(model);
 		json = VotacaoConverter.modelToJson(model);
 		return Response.status(200).entity(json).build();
 	}
@@ -53,7 +56,7 @@ public class VotacaoRESTRoutes {
 	public Response pesquisarVotacoes(String document) {
 		VotacaoJson json = VotacaoConverter.stringToJson(document);
 		Votacao model = VotacaoConverter.jsonToModel(json);
-		List<Votacao> models = remote.pesquisar(model);
+		List<Votacao> models = votacaoRemote.pesquisar(model);
 		List<VotacaoJson> jsons = VotacaoConverter.modelToJson(models);
 		return Response.status(200).entity(jsons).build();
 	}
@@ -65,7 +68,7 @@ public class VotacaoRESTRoutes {
 		VotacaoJson json = VotacaoConverter.stringToJson(document);
 		Votacao model = VotacaoConverter.jsonToModel(json);
 		
-		List<Restaurante> models = remote.restaurantesJaUtilizados(model);
+		List<Restaurante> models = resultadosRemote.restaurantesJaUtilizados(model);
 		List<RestauranteJson> jsons = RestauranteConverter.modelToJson(models);
 		
 		return Response.status(200).entity(jsons).build();
@@ -77,7 +80,7 @@ public class VotacaoRESTRoutes {
 	public Response pesquisarResultados(String document) {
 		ResultadosJson json = ResultadosConverter.stringToJson(document);
 		Resultados model = ResultadosConverter.jsonToModel(json);
-		List<Resultados> models = remote.resultados(model);
+		List<Resultados> models = resultadosRemote.resultadosDepoisDe(model.getData());
 		List<ResultadosJson> jsons = ResultadosConverter.modelToJson(models);
 		return Response.status(200).entity(jsons).build();
 	}
@@ -88,7 +91,7 @@ public class VotacaoRESTRoutes {
 	public Response inserirResultado(String document) {
 		ResultadosJson json = ResultadosConverter.stringToJson(document);
 		Resultados model = ResultadosConverter.jsonToModel(json);
-		model = remote.inserirResultado(model);
+		model = resultadosRemote.inserirResultado(model);
 		json = ResultadosConverter.modelToJson(model);
 		return Response.status(200).entity(json).build();
 	}

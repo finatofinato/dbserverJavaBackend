@@ -7,21 +7,23 @@ package br.com.finatofinato.bean.restaurante;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 
-import br.com.finatofinato.bean.common.EMHelper;
+import br.com.finatofinato.dao.restaurante.RestauranteDao;
 import br.com.finatofinato.model.Restaurante;
 
 @Stateless
-public class RestauranteBean extends EMHelper implements RestauranteRemote, RestauranteLocal {
-
+public class RestauranteBean implements RestauranteRemote, RestauranteLocal {
+	
+	@Inject
+	private RestauranteDao restauranteDao;
+	
     public List<Restaurante> listar() {
-    	List<Restaurante> result = getEntityManager().createQuery("SELECT r FROM Restaurante r").getResultList();
-    	return result;
+    	return restauranteDao.listar();
     }
     
     public Restaurante inserir(Restaurante restaurante) {
-    	getEntityManager().persist(restaurante);
-    	return restaurante;
+    	return restauranteDao.inserir(restaurante);
     }
     
 }
